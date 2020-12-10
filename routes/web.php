@@ -41,3 +41,9 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('users/{id}', 'UsersController@show');
     Route::get('users', 'UsersController@index');
 });
+
+Route::group(['prefix' => 'github'], function () {
+    Route::get('trending[/{language}]', 'GithubController@trending');
+    Route::get('spoken-languages', 'GithubController@spokenLanguages');
+    Route::get('languages', 'GithubController@languages');
+});

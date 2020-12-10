@@ -5,10 +5,11 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.0.1",
         "illuminate/redis": "^8.9",
+        "jaeger/querylist": "^4.2",
         "jiannei/laravel-enum": "^1.0",
         "jiannei/laravel-logger": "^1.0",
         "jiannei/laravel-response": "^1.0",
@@ -16,6 +17,7 @@
         "league/fractal": "^0.19.2",
         "prettus/l5-repository": "^2.7",
         "spatie/laravel-permission": "^3.17",
+        "spatie/valuestore": "^1.2",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
