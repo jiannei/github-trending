@@ -34,10 +34,6 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
-$app->register(Jenssegers\Mongodb\MongodbServiceProvider::class);
-
-$app->withEloquent();
-
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -70,22 +66,9 @@ $app->singleton(
 |
 */
 
-$app->configure('app');
-$app->configure('auth');
-$app->configure('broadcasting');
-$app->configure('cache');
-$app->configure('database');
-$app->configure('filesystems');
-$app->configure('logging');
-$app->configure('queue');
-$app->configure('services');
-$app->configure('views');
 $app->configure('repository');
 $app->configure('enum');
-$app->configure('permission');
 $app->configure('response');
-
-$app->alias('cache', \Illuminate\Cache\CacheManager::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -98,12 +81,7 @@ $app->alias('cache', \Illuminate\Cache\CacheManager::class);
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
-
 $app->middleware([
-    \Jiannei\Logger\Laravel\Http\Middleware\RequestLog::class,
     \Jiannei\Response\Laravel\Http\Middleware\Etag::class,
 ]);
 
@@ -129,19 +107,13 @@ $app->routeMiddleware([
 /*
 * Application Service Providers...
 */
-// $app->register(App\Providers\AppServiceProvider::class);
-$app->register(App\Providers\AuthServiceProvider::class);
-$app->register(App\Providers\EventServiceProvider::class);
+
 
 /*
  * Package Service Providers...
  */
-$app->register(\Tymon\JWTAuth\Providers\LumenServiceProvider::class);
-$app->register(\Illuminate\Redis\RedisServiceProvider::class);
-$app->register(\Spatie\Permission\PermissionServiceProvider::class);
 $app->register(\Jiannei\Enum\Laravel\Providers\ServiceProvider::class);
 $app->register(\Jiannei\Response\Laravel\Providers\ServiceProvider::class);
-$app->register(\Jiannei\Logger\Laravel\Providers\ServiceProvider::class);
 
 /*
  * Custom Service Providers.
