@@ -34,6 +34,10 @@ Route::get('author', function () {
     return $response->json();
 });
 
+Route::get('/key', function() {
+    return \Illuminate\Support\Str::random(32);
+});
+
 // 用户管理
 Route::post('users', 'UsersController@store');
 
