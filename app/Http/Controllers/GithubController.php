@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Services\CrawlService;
 use Illuminate\Http\Request;
+use Jiannei\Response\Laravel\Support\Facades\Response;
 
 class GithubController extends Controller
 {
@@ -29,22 +30,22 @@ class GithubController extends Controller
         $spoken_language = $request->get('spoken_language');
         $since = $request->get('since', 'daily');
 
-        $data = $this->service->handleCrawlTrending(compact('spoken_language', 'since', 'language'));
+        $data = $this->service->handleTrending(compact('spoken_language', 'since', 'language'));
 
-        return $this->response->success($data);
+        return Response::success($data);
     }
 
     public function spokenLanguages()
     {
-        $data = $this->service->handleCrawlTrendingSpokenLanguages();
+        $data = $this->service->handleTrendingSpokenLanguages();
 
-        return $this->response->success($data);
+        return Response::success($data);
     }
 
     public function languages()
     {
-        $data = $this->service->handleCrawlTrendingLanguages();
+        $data = $this->service->handleTrendingLanguages();
 
-        return $this->response->success($data);
+        return Response::success($data);
     }
 }

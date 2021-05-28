@@ -69,6 +69,7 @@ $app->singleton(
 $app->configure('repository');
 $app->configure('enum');
 $app->configure('response');
+$app->configure('crawler');
 
 /*
 |--------------------------------------------------------------------------
@@ -112,8 +113,8 @@ $app->routeMiddleware([
 /*
  * Package Service Providers...
  */
-$app->register(\Jiannei\Enum\Laravel\Providers\ServiceProvider::class);
-$app->register(\Jiannei\Response\Laravel\Providers\ServiceProvider::class);
+$app->register(\Jiannei\Enum\Laravel\Providers\LumenServiceProvider::class);
+$app->register(\Jiannei\Response\Laravel\Providers\LumenServiceProvider::class);
 
 /*
  * Custom Service Providers.
