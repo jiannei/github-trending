@@ -68,7 +68,7 @@ class CrawlService
 
         $data = $this->crawl($crawlSetting['url'], $crawlSetting['rules'], $crawlSetting['range']);
 
-        return $data->map(function (&$item) {
+        return $data->map(function ($item) {
             $item['code'] = Str::substr($item['code'], -2);
             return $item;
         })->all();
@@ -85,7 +85,7 @@ class CrawlService
 
         $data = $this->crawl($crawlSetting['url'], $crawlSetting['rules'], $crawlSetting['range']);
 
-        return $data->map(function (&$item) {
+        return $data->map(function ($item) {
             $item['code'] = last(explode('/', current(explode('?', $item['code']))));
             return $item;
         })->all();
